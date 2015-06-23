@@ -56,7 +56,11 @@ LOCAL_COPY_HEADERS:= \
 
 LOCAL_PRELINK_MODULE := false
 
+ifeq ($(PROPRIETARY_BLOBS_EXIST),true)
+#include $(BUILD_SHARED_LIBRARY)
+else
 include $(BUILD_SHARED_LIBRARY)
+endif
 
 include $(CLEAR_VARS)
 
@@ -112,6 +116,10 @@ endif
 LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_RELATIVE_PATH := hw
 
+ifeq ($(PROPRIETARY_BLOBS_EXIST),true)
+#include $(BUILD_SHARED_LIBRARY)
+else
 include $(BUILD_SHARED_LIBRARY)
+endif
 
 endif # not BUILD_TINY_ANDROID
